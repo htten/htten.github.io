@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "openclaw": {
+      "command": "/home/htten/.openclaw/workspace/mcp-server/server.js"
+    }
+  },
+  "imports": []
+}
