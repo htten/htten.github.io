@@ -1,10 +1,23 @@
 # AGENTS.md - Your Workspace
 
+**规则：**
+- 只允许新建/追加，禁止覆盖已有文件
+- 输出格式：先结论，再步骤，再风险
+
 This folder is home. Treat it that way.
 
 ## First Run
 
 If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out who you are, then delete it. You won't need it again.
+
+## 任务完成报告
+
+每次完成任务后，必须向用户报告结果，包括：
+- 做了哪些操作
+- 结果如何
+- 如有配置变更，说明变更内容
+
+---
 
 ## Every Session
 

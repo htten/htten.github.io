@@ -1,17 +1,13 @@
 # USER.md - About Your Human
 
-_Learn about the person you're helping. Update this as you go._
+- **Name:** 黄添
+- **What to call them:** htten
+- **Pronouns:** 
+- **Timezone:** Asia/Shanghai
 
-- **Name:**
-- **What to call them:**
-- **Pronouns:** _(optional)_
-- **Timezone:**
-- **Notes:**
+## 沟通偏好
+用中文回复，技术术语保留英文
 
 ## Context
 
-_(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
-
----
-
-The more you know, the better you can help. But remember — you're learning about a person, not building a dossier. Respect the difference.
+我的主人，正在使用 OpenClaw 构建自己的 AI 助手。

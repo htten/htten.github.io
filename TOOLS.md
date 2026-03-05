@@ -59,3 +59,20 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
+
+## GitHub 访问问题
+
+### HTTPS 被阻，SSH 可用
+- 症状：curl https://github.com 超时，但 ping 正常
+- 解决：使用 SSH 协议代替 HTTPS
+  ```bash
+  # 错误
+  git clone https://github.com/...
+  
+  # 正确
+  git clone git@github.com:...
+  ```
+
+### SSH 密钥添加后首次可能超时
+- 添加公钥后，等待几秒再试
+- 或重启 Gateway
