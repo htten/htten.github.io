@@ -1,0 +1,58 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const tags = [...new Set(posts.flatMap(post => post.data.tags || []))].sort();
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title="标签 | HTTEN 的博客" description="文章标签分类" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>标签</h1>
+			<div class="tags-container">
+				{tags.map(tag => (
+					<a href={`/tags/${tag}`} class="tag">
+						{tag}
+					</a>
+				))}
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+	h1 {
+		margin-bottom: 2rem;
+	}
+	.tags-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.tag {
+		display: inline-block;
+		padding: 0.5rem 1rem;
+		background: var(--accent);
+		color: white;
+		border-radius: 4px;
+		text-decoration: none;
+		transition: transform 0.2s;
+	}
+	.tag:hover {
+		transform: translateY(-2px);
+	}
+</style>

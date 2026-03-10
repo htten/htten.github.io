@@ -1,0 +1,75 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	const tags = [...new Set(posts.flatMap(post => post.data.tags || []))];
+	return tags.map(tag => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const allPosts = await getCollection('blog');
+const filteredPosts = allPosts.filter(post => post.data.tags?.includes(tag));
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={`标签: ${tag} | HTTEN 的博客`} description={`标签 ${tag} 相关文章`} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>标签: {tag}</h1>
+			<p>共 {filteredPosts.length} 篇文章</p>
+			<ul class="blog-list">
+				{filteredPosts.map(post => (
+					<li>
+						<a href={`/blog/${post.id}/`}>
+							<h2>{post.data.title}</h2>
+							<p>{post.data.description}</p>
+							<FormattedDate date={post.data.pubDate} />
+						</a>
+					</li>
+				))}
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+	h1 {
+		margin-bottom: 0.5rem;
+	}
+	p {
+		color: var(--gray);
+		margin-bottom: 2rem;
+	}
+	.blog-list {
+		list-style: none;
+		padding: 0;
+	}
+	.blog-list li {
+		margin-bottom: 1.5rem;
+	}
+	.blog-list a {
+		text-decoration: none;
+		color: var(--black);
+	}
+	.blog-list h2 {
+		margin-bottom: 0.5rem;
+	}
+	.blog-list p {
+		margin-bottom: 0.5rem;
+	}
+</style>
